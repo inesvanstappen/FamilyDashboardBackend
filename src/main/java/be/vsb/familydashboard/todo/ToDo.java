@@ -1,6 +1,7 @@
 package be.vsb.familydashboard.todo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 
@@ -12,10 +13,16 @@ public class ToDo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private LocalDate dueDate;
+
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String assignedUser;
 
+    @NotBlank
     @Enumerated(EnumType.STRING)
     private Status status;
 
