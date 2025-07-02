@@ -17,7 +17,7 @@ public class ToDo {
     private LocalDate dueDate;
 
     @NotBlank
-    private String title;
+    private String task;
 
     @NotBlank
     private String assignedUser;
@@ -29,10 +29,10 @@ public class ToDo {
     protected ToDo() {
     }
 
-    public ToDo(long id, LocalDate dueDate, String title, String assignedUser, Status status) {
+    public ToDo(long id, LocalDate dueDate, String task, String assignedUser, Status status) {
         this.id = id;
         this.dueDate = dueDate;
-        this.title = title;
+        this.task = task;
         this.assignedUser = assignedUser;
         this.status = status;
     }
@@ -45,8 +45,8 @@ public class ToDo {
         return dueDate;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTask() {
+        return task;
     }
 
     public String getAssignedUser() {

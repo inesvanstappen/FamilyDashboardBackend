@@ -1,9 +1,8 @@
 package be.vsb.familydashboard.todo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class ToDoController {
         this.toDoService = toDoService;
     }
 
-    @GetMapping()
+    @GetMapping
     public List<ToDo> getAllToDos() {
         return toDoService.getAllToDos();
     }
@@ -24,5 +23,21 @@ public class ToDoController {
     @GetMapping("{id}")
     public ToDo getToDoById(@PathVariable long id) {
         return toDoService.getToDoById(id).orElseThrow(ToDoNotFoundException::new);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addToDo(@RequestBody @Valid ToDo toDo) {
+        try{
+            toDoService.addToDo(toDo);
+        } catch (ToDoDuplicateException exception) {
+            throw new ToDoDuplicateException(exception.getMessage());
+        }
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteToDo(@PathVariable long id) {
+        toDoService.deleteToDo(id);
     }
 }
