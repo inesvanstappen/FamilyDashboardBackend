@@ -6,9 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "todo")
+@Table(name = "todos")
 public class ToDo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
