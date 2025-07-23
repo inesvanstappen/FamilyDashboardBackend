@@ -16,6 +16,8 @@ public class Recipe {
     @Enumerated(EnumType.STRING)
     private Categorie categorie;
 
+    private String url;
+
     protected Recipe() {
     }
 
