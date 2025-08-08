@@ -1,5 +1,7 @@
 package be.vsb.familydashboard.weekmenu;
 
+import be.vsb.familydashboard.recipes.DayRecipeDTO;
+import be.vsb.familydashboard.recipes.Recipe;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,4 +27,9 @@ public class WeekMenuController {
         return weekMenuService.getWeekMenuById(id).orElseThrow(WeekMenuNotFound::new);
     }
 
+    @GetMapping("/upcoming")
+    public List<DayRecipeDTO> getUpcomingDayRecipes() {
+        WeekMenu weekMenu = weekMenuService.getLatestWeekMenu().orElseThrow(WeekMenuNotFound::new);
+        return weekMenu.getUpcomingDayRecipes();
+    }
 }

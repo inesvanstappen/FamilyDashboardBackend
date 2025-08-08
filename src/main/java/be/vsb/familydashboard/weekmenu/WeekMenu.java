@@ -1,8 +1,11 @@
 package be.vsb.familydashboard.weekmenu;
 
+import be.vsb.familydashboard.recipes.DayRecipeDTO;
 import be.vsb.familydashboard.recipes.Recipe;
 import jakarta.persistence.*;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,5 +48,17 @@ public class WeekMenu {
         this.weekMenu.set(day2, recipe1);
 
         return List.of(recipe1, recipe2);
+    }
+
+    public List<DayRecipeDTO> getUpcomingDayRecipes() {
+        DayOfWeek today = LocalDate.now().getDayOfWeek();
+        int todayIndex = today.getValue() - 1; // Maandag = 1 → index 0
+
+        List<DayRecipeDTO> upcoming = new LinkedList<>();
+        for (int i = todayIndex; i < weekMenu.size(); i++) {
+            upcoming.add(new DayRecipeDTO(i, weekMenu.get(i)));
+        }
+
+        return upcoming;
     }
 }

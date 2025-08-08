@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -17,8 +18,10 @@ public class ToDoController {
     }
 
     @GetMapping
-    public List<ToDo> getAllToDos() {
-        return toDoService.getAllToDos();
+    public List<ToDoDTO> getAllToDos() {
+        return toDoService.getAllToDos().stream()
+                .map(ToDoDTO::new)
+                .toList();
     }
 
     @GetMapping("{id}")
@@ -29,7 +32,7 @@ public class ToDoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void addToDo(@RequestBody @Valid ToDo toDo) {
-        try{
+        try {
             toDoService.addToDo(toDo);
         } catch (ToDoDuplicateException exception) {
             throw new ToDoDuplicateException(exception.getMessage());

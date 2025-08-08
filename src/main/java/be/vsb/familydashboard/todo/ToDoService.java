@@ -25,8 +25,8 @@ public class ToDoService {
     }
 
     public void addToDo(@Valid ToDo toDo) throws ToDoDuplicateException {
-        toDoRepository.findByTaskIgnoreCase(toDo.getTask()).ifPresent(existingToDo -> {
-            throw new ToDoDuplicateException("ToDo with task " + toDo.getTask() + " already exists.");
+        toDoRepository.findByTitleIgnoreCase(toDo.getTitle()).ifPresent(existingToDo -> {
+            throw new ToDoDuplicateException("ToDo with task " + toDo.getTitle() + " already exists.");
         });
 
         toDoRepository.save(toDo);
