@@ -15,12 +15,15 @@ public class WeekMenuService {
         this.weekMenuRepository = weekMenuRepository;
     }
 
-
     public List<WeekMenu> getWeekMenu() {
         return weekMenuRepository.findAll();
     }
 
     public Optional<WeekMenu> getWeekMenuById(long id) {
         return weekMenuRepository.findById(id);
+    }
+
+    public Optional<WeekMenu> getLatestWeekMenu() {
+        return weekMenuRepository.findFirstByOrderByIdDesc();
     }
 }

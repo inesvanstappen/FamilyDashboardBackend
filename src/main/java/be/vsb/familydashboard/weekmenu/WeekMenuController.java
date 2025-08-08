@@ -16,8 +16,8 @@ public class WeekMenuController {
     }
 
     @GetMapping
-    public List<WeekMenu> getWeekMenu() {
-        return weekMenuService.getWeekMenu();
+    public WeekMenu getWeekMenu() {
+        return weekMenuService.getLatestWeekMenu().orElseThrow(WeekMenuNotFound::new);
     }
 
     @GetMapping("{id}")
