@@ -16,6 +16,9 @@ public class WeekMenu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, name = "start_date")
+    private LocalDate startDate;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "weekmenu_recipes",
@@ -32,12 +35,20 @@ public class WeekMenu {
         this.weekMenu.add(recipe);
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public List<Recipe> getWeekMenu() {
         return this.weekMenu;
     }
 
     public Recipe getRecipesForDay(int day) {
         return this.weekMenu.get(day);
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
     public List<Recipe> switchRecipes(int day1, int day2) {

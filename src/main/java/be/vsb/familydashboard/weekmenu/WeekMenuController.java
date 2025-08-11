@@ -18,18 +18,14 @@ public class WeekMenuController {
     }
 
     @GetMapping
-    public WeekMenu getWeekMenu() {
-        return weekMenuService.getLatestWeekMenu().orElseThrow(WeekMenuNotFound::new);
+    public WeekMenuResponseDTO getWeekMenu() {
+        return weekMenuService.getCurrentWeekMenu()
+                .map(weekMenu -> new WeekMenuResponseDTO(weekMenu.getId(), weekMenu.getUpcomingDayRecipes()))
+                .orElseThrow(WeekMenuNotFound::new);
     }
 
     @GetMapping("{id}")
     public WeekMenu getWeekMenuById(@PathVariable long id) {
         return weekMenuService.getWeekMenuById(id).orElseThrow(WeekMenuNotFound::new);
-    }
-
-    @GetMapping("/upcoming")
-    public List<DayRecipeDTO> getUpcomingDayRecipes() {
-        WeekMenu weekMenu = weekMenuService.getLatestWeekMenu().orElseThrow(WeekMenuNotFound::new);
-        return weekMenu.getUpcomingDayRecipes();
     }
 }

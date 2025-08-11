@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/recipes")
 public class RecipeController {
@@ -21,8 +23,11 @@ public class RecipeController {
     }
 
     @GetMapping
-    public List<Recipe> getAllRecipes() {
-        return recipeService.getAllRecipes();
+    public List<RecipeDTO> getAllRecipes() {
+        return recipeService.getAllRecipes()
+                .stream()
+                .map(data -> new RecipeDTO(data.getId(), data.getName()))
+                .collect(Collectors.toList());
     }
 
     @PostMapping
