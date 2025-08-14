@@ -3,10 +3,10 @@ VALUES (1, 'Ines'),
        (2, 'Nico');
 
 
-INSERT INTO todos (id, due_date, title, assigned_user_id, status)
-VALUES (1, '2025-07-10', 'Presentatie voorbereiden', 1, 'OPEN'),
-       (2, '2025-07-12', 'Code review', 2, 'IN_PROGRESS'),
-       (3, '2025-07-15', 'Unit tests schrijven', 1, 'DONE');
+INSERT INTO todos (due_date, title, assigned_user_id, status)
+VALUES ('2025-07-10', 'Presentatie voorbereiden', 1, 'OPEN'),
+       ('2025-07-12', 'Code review', 2, 'IN_PROGRESS'),
+       ( '2025-07-15', 'Unit tests schrijven', 1, 'DONE');
 
 INSERT INTO recipes (id, name, difficulty, categorie, url)
 VALUES (1, 'Kip met appelmoes', 1, 'DINNER', 'https://www.google.be'),
