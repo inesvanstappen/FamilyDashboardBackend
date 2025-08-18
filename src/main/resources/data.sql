@@ -15,9 +15,9 @@ VALUES (1, 'Kip met appelmoes', 1, 'DINNER', 'https://www.google.be'),
        (4, 'Chocomouse', 3, 'DESSERT', 'https://www.google.be'),
        (5, 'Pokebowl', 3, 'DESSERT', 'https://www.google.be');
 
-INSERT INTO weekmenus (id, start_date)
-VALUES (1, '2025-08-11'),
-       (2, '2025-08-18');
+INSERT INTO weekmenus (start_date)
+VALUES ('2025-08-11'),
+       ('2025-08-18');
 
 INSERT INTO weekmenu_recipes (menu_day, weekmenu_id, recipe_id)
 VALUES (0, 1, 2),

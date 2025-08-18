@@ -28,4 +28,9 @@ public class WeekMenuController {
     public WeekMenu getWeekMenuById(@PathVariable long id) {
         return weekMenuService.getWeekMenuById(id).orElseThrow(WeekMenuNotFound::new);
     }
+
+    @PostMapping
+    public void addWeekMenu(@RequestBody ReceivedWeekMenuDTO payload) {
+        weekMenuService.addWeekMenu(payload.startDate(), payload.recipeIds());
+    }
 }
