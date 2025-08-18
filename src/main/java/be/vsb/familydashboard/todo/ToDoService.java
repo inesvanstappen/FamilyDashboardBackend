@@ -20,10 +20,11 @@ public class ToDoService {
         return toDoRepository.findAll();
     }
 
-    public Optional<ToDo> getToDoById(long id) {
+    public Optional<ToDo> findToDoById(long id) {
         return toDoRepository.findById(id);
     }
 
+    @Transactional
     public void addToDo(@Valid ToDo toDo) throws ToDoDuplicateException {
         toDoRepository.findByTitleIgnoreCase(toDo.getTitle()).ifPresent(existingToDo -> {
             throw new ToDoDuplicateException("ToDo with task " + toDo.getTitle() + " already exists.");
@@ -36,5 +37,10 @@ public class ToDoService {
         toDoRepository.findById(id).orElseThrow(ToDoNotFoundException::new);
 
         toDoRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateToDo(@Valid ToDo toDo) {
+        toDoRepository.save(toDo);
     }
 }

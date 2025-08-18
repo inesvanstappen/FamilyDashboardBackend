@@ -17,6 +17,8 @@ public class ReceivedToDoDTO {
     @NotNull
     private String status;
 
+    public ReceivedToDoDTO() {
+    }
 
     public ReceivedToDoDTO(String title, LocalDate dueDate, Long assignedUserId, String status) {
         this.title = title;

@@ -6,6 +6,7 @@ public class ToDoDTO {
     private Long id;
     private String title;
     private String assignedUserName;
+    private Long assignedUserId;
     private String status;
     private LocalDate dueDate;
 
@@ -15,6 +16,7 @@ public class ToDoDTO {
         this.assignedUserName = todo.getAssignedUser().getName();
         this.status = todo.getStatus();
         this.dueDate = todo.getDueDate();
+        this.assignedUserId = todo.getAssignedUser().getId();
     }
 
     public Long getId() {
@@ -35,5 +37,9 @@ public class ToDoDTO {
 
     public LocalDate getDueDate() {
         return dueDate;
+    }
+
+    public Long getAssignedUserId() {
+        return assignedUserId;
     }
 }
