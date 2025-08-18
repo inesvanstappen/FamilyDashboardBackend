@@ -7,7 +7,6 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "todos")
 public class ToDo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -71,5 +70,20 @@ public class ToDo {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "ToDo{" +
+                "id=" + id +
+                ", dueDate=" + dueDate +
+                ", title='" + title + '\'' +
+                ", assignedUser={" + assignedUser.getName() + ", " + assignedUser.getId() +
+                "}, status='" + status + '\'' +
+                '}';
     }
 }

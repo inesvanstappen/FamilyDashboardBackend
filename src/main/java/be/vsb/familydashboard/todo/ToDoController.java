@@ -94,6 +94,8 @@ public class ToDoController {
                     toDoDTO.getStatus()
             );
 
+            toDo.setId(id);
+
             toDoService.updateToDo(toDo);
         } catch (ObjectOptimisticLockingFailureException exception) {
             throw new ToDoNotUpdatableException();
