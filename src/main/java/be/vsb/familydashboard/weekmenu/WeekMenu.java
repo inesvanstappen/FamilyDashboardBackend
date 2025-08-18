@@ -31,6 +31,11 @@ public class WeekMenu {
     protected WeekMenu() {
     }
 
+    public WeekMenu(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+
     public void addRecipeToWeekMenu(Recipe recipe) {
         this.weekMenu.add(recipe);
     }

@@ -1,7 +1,5 @@
 package be.vsb.familydashboard.weekmenu;
 
-import be.vsb.familydashboard.recipes.DayRecipeDTO;
-import be.vsb.familydashboard.recipes.Recipe;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,5 +25,10 @@ public class WeekMenuController {
     @GetMapping("{id}")
     public WeekMenu getWeekMenuById(@PathVariable long id) {
         return weekMenuService.getWeekMenuById(id).orElseThrow(WeekMenuNotFound::new);
+    }
+
+    @PostMapping
+    public void addWeekMenu(@RequestBody ReceivedWeekMenuDTO payload) {
+        weekMenuService.addWeekMenu(payload.startDate(), payload.recipeIds());
     }
 }
