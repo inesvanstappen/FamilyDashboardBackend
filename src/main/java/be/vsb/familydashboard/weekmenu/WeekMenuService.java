@@ -1,6 +1,5 @@
 package be.vsb.familydashboard.weekmenu;
 
-import be.vsb.familydashboard.recipes.DayRecipeDTO;
 import be.vsb.familydashboard.recipes.Recipe;
 import be.vsb.familydashboard.recipes.RecipeService;
 import org.springframework.stereotype.Service;
@@ -45,6 +44,11 @@ public class WeekMenuService {
             }
         }
 
+        weekMenuRepository.save(weekMenu);
+    }
+
+    @Transactional
+    public void updateWeekMenu(WeekMenu weekMenu) {
         weekMenuRepository.save(weekMenu);
     }
 }

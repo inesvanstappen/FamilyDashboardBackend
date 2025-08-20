@@ -43,4 +43,14 @@ public class Recipe {
     public Categorie getCategorie() {
         return categorie;
     }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", difficulty=" + difficulty +
+                ", categorie=" + categorie +
+                '}';
+    }
 }

@@ -26,7 +26,7 @@ public class WeekMenu {
             inverseJoinColumns = @JoinColumn(name = "recipe_id")
     )
     @OrderColumn(name = "menu_day")
-    private List<Recipe> weekMenu = new LinkedList<>();
+    private List<Recipe> recipes = new LinkedList<>();
 
     protected WeekMenu() {
     }
@@ -35,35 +35,16 @@ public class WeekMenu {
         this.startDate = startDate;
     }
 
-
     public void addRecipeToWeekMenu(Recipe recipe) {
-        this.weekMenu.add(recipe);
+        this.recipes.add(recipe);
     }
 
     public Long getId() {
         return id;
     }
 
-    public List<Recipe> getWeekMenu() {
-        return this.weekMenu;
-    }
-
-    public Recipe getRecipesForDay(int day) {
-        return this.weekMenu.get(day);
-    }
-
     public LocalDate getStartDate() {
         return startDate;
-    }
-
-    public List<Recipe> switchRecipes(int day1, int day2) {
-        Recipe recipe1 = this.weekMenu.get(day1);
-        Recipe recipe2 = this.weekMenu.get(day2);
-
-        this.weekMenu.set(day1, recipe2);
-        this.weekMenu.set(day2, recipe1);
-
-        return List.of(recipe1, recipe2);
     }
 
     public List<DayRecipeDTO> getUpcomingDayRecipes() {
@@ -71,10 +52,32 @@ public class WeekMenu {
         int todayIndex = today.getValue() - 1; // Maandag = 1 → index 0
 
         List<DayRecipeDTO> upcoming = new LinkedList<>();
-        for (int i = todayIndex; i < weekMenu.size(); i++) {
-            upcoming.add(new DayRecipeDTO(i, weekMenu.get(i)));
+        for (int i = todayIndex; i < recipes.size(); i++) {
+            upcoming.add(new DayRecipeDTO(i, recipes.get(i)));
         }
 
         return upcoming;
+    }
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    @Override
+    public String toString() {
+        return "WeekMenu{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", recipes.size=" + recipes.size() +
+                ", recipes=" + recipes +
+                '}';
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 }
