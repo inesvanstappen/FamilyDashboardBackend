@@ -33,6 +33,7 @@ public class ToDoService {
         toDoRepository.save(toDo);
     }
 
+    @Transactional
     public void deleteToDo(long id) {
         toDoRepository.findById(id).orElseThrow(ToDoNotFoundException::new);
 
