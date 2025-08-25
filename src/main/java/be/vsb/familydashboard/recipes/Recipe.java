@@ -1,6 +1,8 @@
 package be.vsb.familydashboard.recipes;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "recipes")
@@ -9,11 +11,14 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String name;
 
+    @NotBlank
     private long difficulty;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Categorie categorie;
 
     private String url;

@@ -2,6 +2,9 @@ package be.vsb.familydashboard.todo;
 
 import be.vsb.familydashboard.users.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 @Entity
@@ -12,23 +15,28 @@ public class ToDo {
     private Long id;
 
     @Column(name = "due_date", nullable = false)
+    @NotNull
     private LocalDate dueDate;
 
     @Column(nullable = false)
+    @NotBlank
     private String title;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "assigned_user_id", nullable = false)
+    @JoinColumn(
+            name = "assigned_user_id", nullable = false)
+    @NotNull
     private User assignedUser;
 
     @Column(nullable = false)
-    private String status;
+    @NotBlank
+    private Status status;
 
     // Constructors
     public ToDo() {
     }
 
-    public ToDo(LocalDate dueDate, String title, User assignedUser, String status) {
+    public ToDo(LocalDate dueDate, String title, User assignedUser, Status status) {
         this.dueDate = dueDate;
         this.title = title;
         this.assignedUser = assignedUser;
@@ -64,11 +72,11 @@ public class ToDo {
         this.assignedUser = assignedUser;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

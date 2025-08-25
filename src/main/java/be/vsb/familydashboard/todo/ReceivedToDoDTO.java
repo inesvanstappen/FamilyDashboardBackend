@@ -15,12 +15,12 @@ public class ReceivedToDoDTO {
     private Long assignedUserId;
 
     @NotNull
-    private String status;
+    private Status status;
 
     public ReceivedToDoDTO() {
     }
 
-    public ReceivedToDoDTO(String title, LocalDate dueDate, Long assignedUserId, String status) {
+    public ReceivedToDoDTO(String title, LocalDate dueDate, Long assignedUserId, Status status) {
         this.title = title;
         this.dueDate = dueDate;
         this.assignedUserId = assignedUserId;
@@ -39,7 +39,7 @@ public class ReceivedToDoDTO {
         return assignedUserId;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 }

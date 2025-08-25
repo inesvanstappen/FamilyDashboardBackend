@@ -3,6 +3,7 @@ package be.vsb.familydashboard.weekmenu;
 import be.vsb.familydashboard.recipes.DayRecipeDTO;
 import be.vsb.familydashboard.recipes.Recipe;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ public class WeekMenu {
     private Long id;
 
     @Column(nullable = false, name = "start_date")
+    @NotNull
     private LocalDate startDate;
 
     @ManyToMany(cascade = CascadeType.ALL)
