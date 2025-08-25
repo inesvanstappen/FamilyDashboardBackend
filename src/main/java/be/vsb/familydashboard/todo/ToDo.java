@@ -28,8 +28,8 @@ public class ToDo {
     @NotNull
     private User assignedUser;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    @NotBlank
     private Status status;
 
     // Constructors
