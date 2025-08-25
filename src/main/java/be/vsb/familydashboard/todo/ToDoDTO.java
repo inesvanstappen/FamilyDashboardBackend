@@ -7,7 +7,7 @@ public class ToDoDTO {
     private String title;
     private String assignedUserName;
     private Long assignedUserId;
-    private String status;
+    private Status status;
     private LocalDate dueDate;
 
     public ToDoDTO(ToDo todo) {
@@ -31,7 +31,7 @@ public class ToDoDTO {
         return assignedUserName;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
