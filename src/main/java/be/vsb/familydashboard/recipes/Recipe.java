@@ -1,6 +1,8 @@
 package be.vsb.familydashboard.recipes;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,7 +16,9 @@ public class Recipe {
     @NotBlank
     private String name;
 
-    @NotBlank
+    @NotNull(message = "difficulty is verplicht")
+    @Min(value = 1, message = "difficulty moet minimaal 1 zijn")
+    @Max(value = 3, message = "difficulty moet maximaal 3 zijn")
     private long difficulty;
 
     @Enumerated(EnumType.STRING)

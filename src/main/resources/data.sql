@@ -1,19 +1,19 @@
-INSERT INTO users(id, name)
-VALUES (1, 'Ines'),
-       (2, 'Nico');
+INSERT INTO users(name)
+VALUES ('Ines'),
+       ('Nico');
 
 
 INSERT INTO todos (due_date, title, assigned_user_id, status)
 VALUES ('2025-07-10', 'Presentatie voorbereiden', 1, 'OPEN'),
        ('2025-07-12', 'Code review', 2, 'IN_PROGRESS'),
-       ( '2025-07-15', 'Unit tests schrijven', 1, 'DONE');
+       ('2025-07-15', 'Unit tests schrijven', 1, 'DONE');
 
-INSERT INTO recipes (id, name, difficulty, categorie, url)
-VALUES (1, 'Kip met appelmoes', 1, 'DINNER', 'https://www.google.be'),
-       (2, 'Ramen', 2, 'DINNER', 'https://www.google.be'),
-       (3, 'Quiche', 3, 'DESSERT', 'https://www.google.be'),
-       (4, 'Chocomouse', 3, 'DESSERT', 'https://www.google.be'),
-       (5, 'Pokebowl', 3, 'DESSERT', 'https://www.google.be');
+INSERT INTO recipes (name, difficulty, categorie, url)
+VALUES ('Kip met appelmoes', 1, 'DINNER', 'https://www.google.be'),
+       ('Ramen', 2, 'DINNER', 'https://www.google.be'),
+       ('Quiche', 3, 'DESSERT', 'https://www.google.be'),
+       ('Chocomouse', 3, 'DESSERT', 'https://www.google.be'),
+       ('Pokebowl', 3, 'DESSERT', 'https://www.google.be');
 
 INSERT INTO weekmenus (start_date)
 VALUES ('2025-08-25'),
