@@ -126,12 +126,13 @@ class RecipeControllerTest {
         int id = findIdByName("Recipe");
 
         String updateJson = """
-                {
-                  "name":       "Updated Recipe",
-                  "difficulty": 3,
-                  "categorie":  "DESSERT"
-                }
-                """;
+            {
+              "id":         %d,
+              "name":       "Updated Recipe",
+              "difficulty": 3,
+              "categorie":  "DESSERT"
+            }
+            """.formatted(id);
 
         assertThat(
                 mockMvcTester.post()
