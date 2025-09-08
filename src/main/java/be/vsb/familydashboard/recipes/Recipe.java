@@ -30,6 +30,12 @@ public class Recipe {
     protected Recipe() {
     }
 
+    public Recipe(String name, long difficulty, Categorie categorie) {
+        this.name = name;
+        this.difficulty = difficulty;
+        this.categorie = categorie;
+    }
+
     public Recipe(long id, String name, long difficulty, Categorie categorie) {
         this.id = id;
         this.name = name;

@@ -42,5 +42,5 @@ CREATE TABLE weekmenu_recipes
     weekmenu_id BIGINT NOT NULL,
     recipe_id   BIGINT NOT NULL,
     FOREIGN KEY (weekmenu_id) REFERENCES weekmenus (id),
-    FOREIGN KEY (recipe_id) REFERENCES recipes (id)
+    FOREIGN KEY (recipe_id) REFERENCES recipes (id) ON DELETE SET NULL
 );

@@ -21,7 +21,7 @@ public class WeekMenu {
     @NotNull
     private LocalDate startDate;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "weekmenu_recipes",
             joinColumns = @JoinColumn(name = "weekmenu_id"),

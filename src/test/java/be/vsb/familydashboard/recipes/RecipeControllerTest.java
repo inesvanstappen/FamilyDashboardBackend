@@ -13,10 +13,9 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(properties = "API_KEY_WEATHERAPI=dummy-test-key")
 @AutoConfigureMockMvc
 class RecipeControllerTest {
-
     private static final String RECIPE_TABLE = "recipes";
 
     @Autowired
